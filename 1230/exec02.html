@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_많이 본 뉴스</title>
+  <style>
+    *{margin:0px; padding:0px}
+    ul,ol,li{list-style: none;}
+    a{text-decoration: none; color:#333;}
+    .tab_mnu{
+      width:400px;
+      height:300px;
+      border:1px solid #333;
+      position: relative;
+    }
+    .list{display:flex;
+    justify-content: space-around;
+    }
+
+    .list > li{
+      width:100%;
+      text-align: center;
+    }
+
+    .list > li > a{
+      display:block;
+      line-height: 40px;
+    }
+
+    .cont{
+      position:absolute;
+      left:0px;
+      top:50px;
+      width:100%;
+      height:200px;
+      text-align: left;
+      display:none;
+    }
+    .cont > li{
+      display: block;
+      text-indent: 10px;
+
+    }
+    .cont > li > a{
+      display: block;
+      width:100%;
+      text-overflow: ellipsis;/*글자가 한 줄로 넘칠 때 생략기호 나오게*/
+      overflow: hidden;/*해당내역을 벗어난 컨텐츠 숨김*/
+      white-space:nowrap;/*다음줄로 글자가 넘어가지 않게 한줄로 표시*/
+    }
+    #t01{background: rgb(255, 255, 145);}
+    #t02{background: rgb(161, 223, 161);}
+    #t03{background: rgb(160, 160, 230);}
+    #t04{background: rgb(233, 146, 146);}
+    /* on클래스가 적용된 li태그의 자손 뉴스목록이 보인다 */
+    .tab_mnu .list li.on .cont{display:block;}
+
+
+    /*2. 라디오버튼으로 탭메뉴 만들기*/
+    .tab_con{
+      width:400px; height:250px;
+      border:1px solid #000;
+    }
+
+    input[type=radio]{display:none;}
+
+    label{
+      display:inline-block;
+      width:49.1%;
+      background: #ccc;
+      text-align: center;
+    }
+    .c01, .c02{display: none;}
+    /* 라디오 버튼이 체크가 되면 동생들 중에서 해당 클래스를 선택한다. */
+    #tabmenu01:checked ~ .c01{display: block;}
+    #tabmenu02:checked ~ .c02{display: block;}
+    /* 라디오 버튼이 체크가 되면 바로 뒤에 있는 레이블 서식을 변경한다. */
+    input[type=radio]:checked + label{background-color: #ff0;}
+
+    .tab_con ul li a{
+      display: block;
+      width:100%;
+      text-overflow: ellipsis;/*글자가 한 줄로 넘칠 때 생략기호 나오게*/
+      overflow: hidden;/*해당내역을 벗어난 컨텐츠 숨김*/
+      white-space:nowrap;/*다음줄로 글자가 넘어가지 않게 한줄로 표시*/
+    }
+
+
+  </style>
+</head>
+<body>
+  <article>
+  <h2>많이본뉴스</h2>
+  <div class="tab_mnu">
+  <ul class="list">
+    <li class="on"><a href="#" title="MBC" id="t01" class="btn">MBC</a>
+      <ul class="cont">
+        <li><a href="" title="연쇄 살인범'신상공개&dot;&dot;31살 이기영">'연쇄 살인범'신상공개&dot;&dot;31살 이기영</a></li>
+        <li><a href="" title="'제2경인고속화재'최초 화재 운전자 입건..펑 소리 나더니 불">'제2경인고속화재'최초 화재 운전자 입건.."펑 소리 나더니 불"</a></li>
+        <li><a href="" title="'신생아 4명 사망' 이대목동병원 의료진 무죄 확정">'신생아 4명 사망' 이대목동병원 의료진 무죄 확정</a></li>
+        <li><a href="" title="한 총리 중국발 입국 전후 코로나 검사 의무화‥단기비자 발급 제한">한 총리 "중국발 입국 전후 코로나 검사 의무화"‥단기비자 발급 제한</a></li>
+        <li><a href="" title="[World Now] 영면에 든 펠레‥예전 활약 영상">[World Now] 영면에 든 펠레‥예전 활약 영상</a></li>
+        <li><a href="" title="올해 소비자물가 5.1%↑‥외환위기 이후 최고치">올해 소비자물가 5.1%↑‥외환위기 이후 최고치</a></li>
+        <li><a href="" title="미국서 한국산 전기차도 '리스 차량'은 보조금">미국서 한국산 전기차도 '리스 차량'은 보조금</a></li>
+      </ul>
+    </li>
+    <li><a href="#" title="포털" id="t02" class="btn">포털</a>
+      <ul class="cont">
+        <li><a href="" title="">
+          [단독] 숨진 빌라왕 송 모 씨‥"일감 받아 심부름한 사람이었다"</a></li>
+        <li><a href="" title="">[단독] 운동선수·유흥업소 '선수'까지 뇌전증 연기</a></li>
+        <li><a href="" title="">잿더미 된 차량 그대로‥이 시각 갈현고가교</a></li>
+        <li><a href="" title="">"차 두고 뛰쳐나와" 순식간에 번진 불길에 '필사의 탈출'</a></li>
+        <li><a href="" title="">윤 대통령 "우월한 전쟁 준비해야" vs 野 "'안보'는 전쟁 안나게 하는 것"</a></li>
+        <li><a href="" title="">'연쇄 살인범' 신상 공개‥31살 이기영</a></li>
+        <li><a href="" title="">[단독] 빌라왕 뒤의 빌라왕‥끝은 어디인가?</a></li>
+        <li><a href="" title="">플라스틱 방화벽 타고 빠르게 확산</a></li>
+        <li><a href="" title="">러, 또 대규모 공습‥벨라루스 "미사일 격추"</a></li>
+        <li><a href="" title="">미국서 한국산 전기차도 '리스 차량'은 보조금</a></li>
+      </ul>
+    </li>
+    <li><a href="#" title="SNS" id="t03" class="btn">SNS</a>
+      <ul class="cont">
+        <li><a href="" title="">황희찬 역전골, 팬들이 뽑은 'KFA 올해의 골'</a></li>
+        <li><a href="" title="">MBC, 가장 즐겨보는 뉴스 채널 1위</a></li>
+        <li><a href="" title="">[World Now] 영면에 든 펠레‥예전 활약 영상</a></li>
+        <li><a href="" title="">'축구 전설'로 남은 펠레‥암투병 끝 별세</a></li>
+        <li><a href="" title="">경북 구미 고속도로서 연쇄추돌‥2명 사망</a></li>
+        <li><a href="" title="">전주 얼굴없는 천사‥ 23년간 8억 8천여만 원 기부</a></li>
+        <li><a href="" title="">[단독] 숨진 빌라왕 송 모 씨‥"일감 받아 심부름한 사람이었다"</a></li>
+        <li><a href="" title="">[단독] 빌라왕 뒤의 빌라왕‥끝은 어디인가?</a></li>
+        <li><a href="" title="">[와글와글] "네가 왜 거기서 나와"‥ 대형 쇼핑몰 5층에 '경찰서'?</a></li>
+        <li><a href="" title="">마침내 달 품은 '다누리'‥우려 씻어낸 완벽한 성공</a></li>
+      </ul>
+    </li>
+    <li><a href="#" title="유튜브" id="t04" class="btn">유튜브</a>
+      <ul class="cont">
+        <li><a href="" title="">오늘 새벽 또 무인기 소동‥굉음에 놀라 '깜짝'</a></li>
+        <li><a href="" title="">뉴스외전
+          [뉴스외전 경제 '쏙'] '1/4 토막' 테슬라의 몰락‥"고양이 밥도 못 맡긴다"</a></li>
+        <li><a href="" title="">"차 두고 뛰쳐나와" 순식간에 번진 불길에 '필사의 탈출'</a></li>
+        <li><a href="" title="">[와글와글] "네가 왜 거기서 나와"‥ 대형 쇼핑몰 5층에 '경찰서'?</a></li>
+        <li><a href="" title="">'비밀 경찰서' 의심 중식당 "추악한 세력 폭로하겠다"</a></li>
+        <li><a href="" title="">'비밀 경찰서' 지목 중식당 "오늘 폭로하겠다" 예고</a></li>
+        <li><a href="" title="">"도대체 뭐한 거냐" 대통령 질책에 군 "억울하다" 볼멘소리도</a></li>
+        <li><a href="" title="">[와글와글] "아무도 없다 훔치자!" 재해 틈탄 도둑들</a></li>
+        <li><a href="" title="">"김정은이 남친인가?" 미국, 독일에서 인종차별 범죄 잇따라</a></li>
+        <li><a href="" title="">[단독] 숨진 빌라왕 송 모 씨‥"일감 받아 심부름한 사람이었다"</a></li>
+      </ul>
+    </li>
+  </ul>
+  </article>
+
+
+  <h3>2. 라디오버튼으로 탭메뉴</h3>
+
+  <article class="tab_con">
+    <input type="radio" id="tabmenu01" name="a" checked>
+    <label for="tabmenu01">MBC</label>
+    <input type="radio" id="tabmenu02" name="a">
+    <label for="tabmenu02">포털</label>
+
+    <ul class="c01">
+      <li><a href="" title="연쇄 살인범'신상공개&dot;&dot;31살 이기영">'연쇄 살인범'신상공개&dot;&dot;31살 이기영</a></li>
+      <li><a href="" title="'제2경인고속화재'최초 화재 운전자 입건..펑 소리 나더니 불">'제2경인고속화재'최초 화재 운전자 입건.."펑 소리 나더니 불"</a></li>
+      <li><a href="" title="'신생아 4명 사망' 이대목동병원 의료진 무죄 확정">'신생아 4명 사망' 이대목동병원 의료진 무죄 확정</a></li>
+      <li><a href="" title="한 총리 중국발 입국 전후 코로나 검사 의무화‥단기비자 발급 제한">한 총리 "중국발 입국 전후 코로나 검사 의무화"‥단기비자 발급 제한</a></li>
+      <li><a href="" title="[World Now] 영면에 든 펠레‥예전 활약 영상">[World Now] 영면에 든 펠레‥예전 활약 영상</a></li>
+      <li><a href="" title="올해 소비자물가 5.1%↑‥외환위기 이후 최고치">올해 소비자물가 5.1%↑‥외환위기 이후 최고치</a></li>
+      <li><a href="" title="미국서 한국산 전기차도 '리스 차량'은 보조금">미국서 한국산 전기차도 '리스 차량'은 보조금</a></li>
+    </ul>
+
+    <ul class="c02">
+      <li><a href="" title="">
+        [단독] 숨진 빌라왕 송 모 씨‥"일감 받아 심부름한 사람이었다"</a></li>
+      <li><a href="" title="">[단독] 운동선수·유흥업소 '선수'까지 뇌전증 연기</a></li>
+      <li><a href="" title="">잿더미 된 차량 그대로‥이 시각 갈현고가교</a></li>
+      <li><a href="" title="">"차 두고 뛰쳐나와" 순식간에 번진 불길에 '필사의 탈출'</a></li>
+      <li><a href="" title="">윤 대통령 "우월한 전쟁 준비해야" vs 野 "'안보'는 전쟁 안나게 하는 것"</a></li>
+      <li><a href="" title="">'연쇄 살인범' 신상 공개‥31살 이기영</a></li>
+      <li><a href="" title="">[단독] 빌라왕 뒤의 빌라왕‥끝은 어디인가?</a></li>
+      <li><a href="" title="">플라스틱 방화벽 타고 빠르게 확산</a></li>
+      <li><a href="" title="">러, 또 대규모 공습‥벨라루스 "미사일 격추"</a></li>
+      <li><a href="" title="">미국서 한국산 전기차도 '리스 차량'은 보조금</a></li>
+    </ul>
+  </article>
+
+
+  <script>
+    //변수선언
+    const tabList = document.querySelectorAll('.tab_mnu .list > li')//query 선택자 또는 태그
+
+    //2. for문을 사용하여
+    for(let i=0;i<tabList.length;i++){//li태그의 개수만큼만 반복 실행한다.
+    tabList[i].querySelector('.btn').addEventListener('click', function(e){
+      e.preventDefault();//클릭시 이벤트를 무력화하여 아무일 없게함.
+      for(let j = 0; j < tabList.length; j++){ //li태그 on클래스 적용
+        tabList[j].classList.remove('on');
+      }
+      this.parentNode.classList.add('on'); //사용자가 선택한 항목에 on클래스 적용
+
+    });
+  }
+  </script>
+</body>
+</html>

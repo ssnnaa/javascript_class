@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_animate메서드</title>
+  <style>
+    .circle{
+      width:100px;height:100px;
+      border-radius: 50%;
+      background: rgb(37, 139, 255);
+      position: relative; /*현 위치가 기준이다.*/
+      text-align: center;
+      line-height: 100px;
+      color:#fff;
+    }
+
+    #kakao{
+      width:300px;
+      display: block;
+      position: relative;
+    }
+
+    .box{
+      background:#00f;
+      width:60px; height:60px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .bar01, .bar02, .bar03{
+      background: #f00;
+      width:20px; height:50px;
+      position: relative;
+      left:0px;
+      margin-bottom: 10px;
+    }
+
+    /* 실습예제1 */
+    li{
+      list-style: none;
+      height:10px;
+      margin:10px 0px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .level_check{
+      position: absolute;
+      left:49%;top:5px;
+      transform: translate(-50%);
+    }
+
+
+    .level_check li{
+      width:300px;
+      background: #ccc;
+      box-shadow: 1px 1px 2px 1px rgba(0,0,0,.4);
+    }
+
+    .gauge01, .gauge02, .gauge03, .gauge04{
+      width:0px;
+      height:10px;
+      background: rgb(120, 184, 162);
+    }
+
+    .title{
+      text-align: right;
+      position: absolute;
+      left:0px;
+    }
+
+
+    .percent{
+      position:absolute;
+      right:120px;
+    }
+
+    fieldset{
+      position: relative;
+      width:700px;
+      height:200px;
+      padding:0px;
+      border-radius: 5px;
+    }
+
+    legend{
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      color:#333;
+      padding:5px;
+    }
+/* 실습예제2 */
+    .box02 *{margin:0px;padding:0px;}
+    .box02{
+      border:3px solid #333;
+      width:500px;
+      height: 280px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .box02 > img{
+      position: absolute;
+    }
+
+    .box02 > img:first-child{
+      left:-200px;
+      top:50px;
+    }
+    .box02 > img:last-child{
+      right:0px;
+      bottom:-300px;
+    }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    $(function(){
+      $('#btn01').click(function(){
+      $('.circle').animate({'left':'800px'},1000).animate({'left':'0px'},1500);
+    });
+
+    $('#btn02').click(function(){
+      $('.circle').stop();    
+    });
+
+    $('#btn03').click(function(){
+      $('.circle').animate({'left':'0px'},1000);
+    });
+    //$('circle').css('left':'0px');
+
+    //3. 캐릭터 움직이기
+
+    let n = 50; //이동할 초기값
+    $('#l_btn').click(function(){
+      $('#kakao').animate({'left':'-='+n},500);
+    });
+
+    $('#r_btn').click(function(){
+      $('#kakao').animate({'left':'+='+n},500);
+    });
+
+    $('#t_btn').click(function(){
+      $('#kakao').animate({'top':'-='+n},500);
+    });
+
+    $('#b_btn').click(function(){
+      $('#kakao').animate({'top':'+='+n},500);
+    });
+
+    //4. box에 마우스 오버시 움직이게 하기
+    $('.box').mouseenter(function(){
+      $(this).animate({'left':'800px'},600);
+    });
+    $('.box').mouseleave(function(){
+      $(this).animate({'left':'50px'},1200);
+    });
+    
+
+    //easing값 사용하기
+    $('#btn04').click(function(){
+      $('.bar01').animate({'width':'500px'},500,'easeOutQuint');
+    });
+    $('#btn05').click(function(){
+      $('.bar02').animate({'width':'800px'},500,'easeOutElastic');
+    });
+    $('#btn06').click(function(){
+      $('.bar03').animate({'width':'400px'},500,'easeInBounce');
+    });
+
+    //실습예제1
+
+    $('.gauge01').animate({'width':'150'},1000,'easeOutQuint');
+    $('.gauge02').animate({'width':'100'},1000,'easeOutQuint');
+    $('.gauge03').animate({'width':'100'},1000,'easeOutQuint');
+    $('.gauge04').animate({'width':'150'},1000,'easeOutQuint');
+
+    //실습예제2
+    $('.jobs_txt').delay(100).animate({'left':'0px'},1000,'easeOutQuint');
+    $('.jobs_img').delay(500).animate({'bottom':'0px'},1000,'easeOutQuint');
+
+    });
+  
+  </script>
+</head>
+<body>
+  <h2>제이쿼리_01_animate메서드</h2>
+  <p>제이쿼리에서는 효과와 에니메이트 메서드를 사용하여 사용자가 선택한 요소를 다양하게 움직이게 만들 수 있다.</p>
+  <h3>1. animate 메소드 작성법</h3>
+  <p>$('대상').animate({'속성':'값'},시간,가속도,콜백함수);</p>
+  <p>{'속성':'값'} - css속성과 값을 말하며, '값'에는 자바스크립트 변수나 연산자를 사용할 수 있다.</p>
+  <p>시간 - 애니메이션이 동작하는 시간을 말하며 1/1000초=1초를 나타냄</p>
+  <p>가속도 - easing메소드를 활용한 값을 말함(이미지 참조)</p>
+  <p>콜백함수 - callback function으로서 애니메이션 동작이 끝나면 다음 동작을 이어서 실행하곶 ㅏㅎㄹ 때 사용</p>
+
+  <h3>2. animate메소드 사용하여 '원'움직이게 하기</h3>
+  <div class="circle">원</div>
+  <input type="button" value="play" id="btn1">
+  <input type="button" value="stop" id="btn2">
+  <input type="button" value="원위치로" id="btn3">
+
+  <h3>3. 자바스크립트 절대값을 활용하여 캐릭터 위치 조정하기</h3>
+  <img src="./21c5aa13017900001_.png" alt="카카오" id="kakao">
+  <input type="button" value="&larr;" id="l_btn">
+  <input type="button" value="&rarr;" id="r_btn">
+  <input type="button" value="&uarr;" id="t_btn">
+  <input type="button" value="&darr;" id="b_btn">
+
+  <h3>4. box에 마우스 오버시 애니메이션 연속 동작하게하기</h3>
+  <div class="box">&nbsp;</div>
+  <div class="box">&nbsp;</div>
+  <div class="box">&nbsp;</div>
+  <div class="box">&nbsp;</div>
+  <div class="box">&nbsp;</div>
+  <h3>5. 제이쿼리 UI라이브러리를 사용하여 속도감(easing) 주기</h3>
+  <img src="./images/easing.png" alt="속도감주기">
+  <div class="bar01"></div>
+  <input type="button" value="easeOutQuint" id="btn04">
+  <div class="bar02"></div>
+  <input type="button" value="easeOutElastic" id="btn05">
+  <div class="bar03"></div>
+  <input type="button" value="easeInBounce" id="btn06">
+  <h3>6.실습 - 자신의 능력치 표현하기(html,css,javascript/jquery,UI/UX design</h3>
+
+
+<fieldset>
+  <legend>MY SKILL</legend>
+  <ul class="title">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JAVASCRIPT/JQUERY</li>
+    <li>UI/UX DESIGN</li>
+  </ul>
+  <ul class="level_check">
+    <li><div class="gauge01"></div></li>
+    <li><div class="gauge02"></div></li>
+    <li><div class="gauge03"></div></li>
+    <li><div class="gauge04"></div></li>
+  </ul>
+  <ul class="percent">
+    <li>50%</li>
+    <li>30%</li>
+    <li>30%</li>
+    <li>50%</li>
+  </ul>
+</fieldset>
+
+<h3>7. 실습 - 나타내기</h3>
+<div class="box02">
+  <img src="./images/jobs_text.gif" alt="" class="jobs_txt">
+  <img src="./images/jobs.png" alt="" class="jobs_img">
+</div>
+</body>
+</html>

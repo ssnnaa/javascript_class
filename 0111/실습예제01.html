@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      li{
+      list-style: none;
+      height:10px;
+      margin:10px 0px;
+      font-size: 14px;
+    }
+
+    .level_check{
+      position: absolute;
+      left:50%;
+      transform: translate(-50%);
+    }
+
+
+    .level_check li{
+      width:300px;
+      background: #ccc;
+    }
+
+    .gauge01, .gauge02, .gauge03, .gauge04{
+      width:0px;
+      height:10px;
+      background: #00f;
+    }
+
+    .title{
+      text-align: right;
+      position: absolute;
+      left:0px;
+    }
+
+
+    .percent{
+      position:absolute;
+      right:120px;
+    }
+
+    fieldset{
+      position: relative;
+      width:700px;
+      height:200px;
+      padding:0px;
+    }
+  </style>
+
+  <script></script>
+  <script>
+    $(function(){
+    $('.gauge01').animate({'width':'150'},1000,'easeOutQuint');
+    $('.gauge02').animate({'width':'100'},1000,'easeOutQuint');
+    $('.gauge03').animate({'width':'100'},1000,'easeOutQuint');
+    $('.gauge04').animate({'width':'150'},1000,'easeOutQuint');
+  });
+  </script>
+</head>
+<body>
+  <fieldset>
+    <legend>MY SKILL</legend>
+  <ul class="level_check">
+    <p>HTML</p><li><div class="gauge01"></div></li>50%
+    CSS<li><div class="gauge02"></div></li>30%
+    JAVASCRIPT/JQUERY<li><div class="gauge03"></div></li>30%
+    UI/UX DESIGN<li><div class="gauge04"></div></li>50%
+  </ul>
+  </fieldset>
+
+
+
+  <ul class="title">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li></li>
+    <li></li>
+  </ul>
+  <ul class="level_check">
+    <li><div class="gauge01"></div></li>
+    <li><div class="gauge02"></div></li>
+    <li><div class="gauge03"></div></li>
+    <li><div class="gauge04"></div></li>
+  </ul>
+  <ul class="percent">
+    <li></li>
+    <li>30%</li>
+    <li>30%</li>
+    <li>50%</li>
+  </ul>
+</body>
+</html>

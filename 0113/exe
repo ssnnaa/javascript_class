@@ -1,0 +1,71 @@
+  <script>
+      $(function(){
+        //1. 인덱스 값을 저장하기 위한 변수 선언
+        let n = $('.c_btn li').index();
+        console.log();//0이 나온다.
+        
+        //이미지 너비값 구하기
+        let img_w = $('.banner img').width();
+
+        //2. 사용자가 콘트롤 버튼을 클릭시 해당 index값 구해보기
+        $('.c_btn li').click(function(){
+          n = $(this).index();
+          console.log(n);
+          console.log(img_w*n);
+          $('.banner').animate({'left':-img_w*n},500);
+          // $('.c_btn li').removeClass('on');
+          // $(this).addClass('on');
+          // $('.c_btn li').css('background-color','#333');//콘트롤 버튼 전체 서식을 변경하고
+          // $(this).css('background-color','#ccc');//사용자가 선택한 콘트롤 버튼만 서식 적용
+        });
+        //3. 3초마다 반복호출하여 슬라이드가 자동으로 움직이게 한다.
+        function autoSlide(n){
+          n =-(n*$('.banner img').width());
+            $('.banner').animate({'left':n},500);
+        }
+        let Timer = setInterval(function(){
+          if(n==3){
+            n=0;
+            console.log(n)
+            $('.c_btn li').removeClass('on');
+          $('c_btn li').eq(n).addClass('on');
+          }else{
+            n++;
+            $('.c_btn li').removeClass('on');
+          $('c_btn li').eq(n).addClass('on');
+          }
+          autoSlide(n);
+        }, 3000);
+
+                let Timer = setInterval(function(){
+          if(n==3){
+            n=0;
+            $('.c_btn li').removeClass('on');
+            $('.c_btn li').eq(n).addClass('on');
+          }else{
+            n++;
+            $('.c_btn li').removeClass('on');
+            $('.c_btn li').eq(n).addClass('on');
+          }
+          console.log(n);
+          autoSlide(n);
+        }, 3000);
+
+        $('c_btn').hover(function(){
+          clearInterval(Timer);
+        },function(){
+          Timer = setInterval(function(){
+          if(n==3){
+            n=0;
+            $('.c_btn li').removeClass('on');
+          $('c_btn li').eq(n).addClass('on');
+          }else{
+            n++;
+            $('.c_btn li').removeClass('on');
+          $('c_btn li').eq(n).addClass('on');
+          }
+          autoSlide(n);
+        }, 3000);
+        });
+      });
+    </script>

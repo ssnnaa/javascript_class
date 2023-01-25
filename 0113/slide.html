@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_슬라이드 구현</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+  <style>
+    
+    *{margin:0px; padding:0px;}
+    ul,li,ol{
+      list-style: none;
+    }
+    a{text-decoration: none;}
+    .b_wrap{
+      width:340px;
+      height:378px;
+      margin:0px auto;
+      border:3px solid #333;
+      position: relative;
+      top:50px;
+      overflow: hidden;
+    }
+
+    .banner{
+      display: flex;
+      position: absolute;
+    }
+
+    .c_btn{
+      display:flex;
+      justify-content: center;
+      position: absolute;
+      bottom:10px;
+      left:45%;
+    }
+
+    .c_btn li{
+      background: #fff;
+      width:10px; height:10px;
+      border-radius: 50%;
+      margin:0px 3px;
+      transition: 0.3s;
+    }
+
+    .p_btn{
+      display: flex;
+      position: absolute;
+      bottom:5px;
+      right:5px;
+    }
+
+    .p_btn li{
+      color:#fff;
+      margin:0px 3px;
+    }
+
+    .on{
+      width:20px !important;
+      background: rgb(255, 94, 0) !important;
+      border-radius: 10px !important;
+      
+    }
+
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    $(function(){
+      let n = $('.c_btn li').index();
+      console.log(n);
+
+      let img_w = ($('.banner img').width());
+
+      $('.c_btn li').click(function(){
+        n = $(this).index();
+        console.log(n);
+        console.log(img_w*n);
+
+        $('.banner').animate({'left':-img_w*n},500);
+        $('.c_btn li').removeClass('on');
+        $(this).addClass('on');
+      });
+
+      function autoSlide(n){
+        n= -(n*$('.banner img').width());
+        $('.banner').animate({'left':n},500);
+      }
+
+      let Timer = setInterval(function(){
+        if(n==2){
+          n=0;
+          $('.c_btn li').removeClass('on');
+          $('.c_btn li').eq(n).addClass('on');
+        }else{
+          n++;
+          $('.c_btn li').removeClass('on');
+          $('.c_btn li').eq(n).addClass('on');
+        }
+        autoSlide(n);
+      },3000);
+
+      $('c_btn').hover(function(){
+        clearInterval(Timer);
+      },function(){
+        Timer = setInterval(function(){
+          if(n==2){
+            n=0;
+            $('.c_btn li').removeClass('on');
+            $('.c_btn li').eq(n).addClass('on');
+          }else{
+            n++;
+            $('.c_btn li').removeClass('on');
+            $('.c_btn li').eq(n).addClass('on');
+          }
+          autoSlide(n);
+        },3000);
+      });
+
+    $('.p_btn li:last-child').click(function(){
+      clearInterval(Timer);
+    });
+    $('.p_btn li:first-child').click(function(){
+      Timer = setInterval(function(){
+          if(n==2){
+            n=0;
+            $('.c_btn li').removeClass('on');
+            $('.c_btn li').eq(n).addClass('on');
+          }else{
+            n++;
+            $('.c_btn li').removeClass('on');
+            $('.c_btn li').eq(n).addClass('on');
+          }
+          autoSlide(n);
+        },3000);
+    });
+
+    });
+  </script>
+</head>
+<body>
+  <article class="b_wrap">
+    <ul class="banner">
+      <li><a href="#" title=""><img src="./images/01-1.jpg" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images/02-1.jpg" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images/03-1.jpg" alt=""></a></li>
+    </ul>
+    <ul class="c_btn">
+      <li class="on">&nbsp;</li>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
+    </ul>
+    <ul class="p_btn">
+      <li><i class="fas fa-play"></i></li>
+      <li><i class="fas fa-pause"></i></li>
+    </ul>
+    
+
+    
+  </article>
+</body>
+</html>

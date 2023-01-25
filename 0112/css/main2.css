@@ -109,18 +109,22 @@ main{
 }
 
 .slide{
-  width:1600px;
-  height:697px;
+  width:100%;
+  /* height:697px; */
   margin:0px auto;
   position: relative;
 }
 .slide > ul{
   display: flex;
-  width:8000px;
+  width:500%;
 }
 .slide > ul > li{
-  width:1600px;
-  height:697px;
+  width: 100%;
+  /* height:697px; */
+}
+
+.slide > ul > li img{
+  width:100%;
 }
 
 .slide > i.fas{

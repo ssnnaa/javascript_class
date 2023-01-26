@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_슬라이드</title>
+  <style>
+    *{margin:0px; padding:0px;}
+    ul, ol, li{
+      list-style: none;
+    }
+    a{color:#333; text-decoration: none;}
+    h2, p{padding:10px;}
+    .banner{
+      width:1200px; height:122px;
+      margin:0px auto;
+      border:3px solid #f00;
+    }
+
+    .banner > ul{
+      display: flex;
+      margin-left:-355px;
+    }
+
+    .banner img{
+      vertical-align: top;
+      /* display:block; */
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+    $(function(){
+      let mleft = -355;
+
+      function moveLeft(){
+        $('.banner ul').css('margin-left',mleft); //왼쪽으로 -335만큼 이동
+        mleft-=2; //-355 -710 -1065
+        console.log(mleft);
+
+        //만약에 ul태그의 위치가 770일 때 왼쪽 첫번째 태그를 오른쪽 끝으로 자리를 배치한다
+        if(mleft==-357){
+          $('.banner ul > li:first-child').insertAfter('.banner ul > li:last-child');
+        }else if(mleft==-711){
+          mleft=-355;
+        }
+      };
+      let Timer = setInterval(moveLeft, 20);
+
+      $('.banner ul').hover(function(){
+        clearInterval(Timer);
+      },function(){
+        clearInterval(Timer);
+        Timer = setInterval(moveLeft, 20);
+      });
+    });
+  </script>
+</head>
+<body>
+  <h2>jquery_DOM_image</h2>
+  <p>7장의 이미지를 사용하여 왼쪽으로 슬라이드되는 애니메이션 구현</p>
+  <article class="banner">
+    <ul>
+      <li><img src="./images02/seoul1.jpg" alt="배너"></li>
+      <li><img src="./images02/seoul2.jpg" alt="배너"></li>
+      <li><img src="./images02/seoul3.jpg" alt="배너"></li>
+      <li><img src="./images02/seoul4.jpg" alt="배너"></li>
+      <li><img src="./images02/seoul5.jpg" alt="배너"></li>
+      <li><img src="./images02/seoul6.png" alt="배너"></li>
+      <li><img src="./images02/seoul7.jpg" alt="배너"></li>
+    </ul>
+  </article>
+</body>
+</html>

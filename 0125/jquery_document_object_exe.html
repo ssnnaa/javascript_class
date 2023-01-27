@@ -75,6 +75,19 @@
 
       });
 
+
+      function autoSlide(){
+          n=$(list).parent().index();
+          let url = $(list).attr('href');
+          let l_img = $(list).find('img');
+          if(n==5){
+            n=0;
+          }else{
+            n++;
+          }
+          $(img).attr({'src':'./images03/baaner'+(n+1)+'.jpg'},500);
+          $
+        }
     });
   </script>
 </head>

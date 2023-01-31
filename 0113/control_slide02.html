@@ -67,6 +67,7 @@
       function autoSlide(n){
         n = -(n*$('.banner img').width());
         $('.banner').animate({'left':n},500);
+        console.log(n);
       }
 
       let Timer = setInterval(function(){

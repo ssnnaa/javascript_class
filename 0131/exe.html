@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제 cjmall 자주하는 질문</title>
+  <link href="./css/exe.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  <script>
+    $(function(){
+      let q = $('.faq > dt')
+
+      q.click(function(){
+      $(this).next().toggle().siblings('dd').hide();
+      $(this).find('i.fas').toggleClass('act01').parent().siblings().find('i.fas').removeClass('act01')
+    });
+
+
+    });
+
+
+  </script>
+</head>
+<body>
+  <section>
+    <div class="s_box">
+    <input type="search" id="search" placeholder="검색어를 입력해 주세요.">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+
+    <div class="title">
+      <h2>자주하는 질문</h2>
+      <p>
+        <a href="https://base.cjonstyle.com/p/customercenter/faqList?allFlag=1" title="전체보기">전체보기 &#12297;</a>
+      </p>
+    </div>
+
+    <dl class="faq">
+      <dt>반품 신청은 어떻게 하나요?<i class="fas fa-angle-down"></i></dt>
+      <dd>반품 신청은 어떻게 하나요?</dd>
+      <dt>주문을 취소하고 싶어요.<i class="fas fa-angle-down"></i></dt>
+      <dd>주문을 취소하고 싶어요.</dd>
+      <dt>리뷰는 어떻게 작성하나요?<i class="fas fa-angle-down"></i></dt>
+      <dd>리뷰는 어떻게 작성하나요?</dd>
+      <dt>반품 시 별도 택배비가 부과되나요?<i class="fas fa-angle-down"></i></dt>
+      <dd>반품 시 별도 택배비가 부과되나요?</dd>
+      <dt>원하는 상품 방송시간을 문자로 받고 싶어요.<i class="fas fa-angle-down"></i></dt>
+      <dd>원하는 상품 방송시간을 문자로 받고 싶어요.</dd>
+      <dt>회원 탈퇴는 어떻게 하나요?<i class="fas fa-angle-down"></i></dt>
+      <dd>회원 탈퇴는 어떻게 하나요?</dd>
+      <dt>배송지를 변경할 수 있나요?<i class="fas fa-angle-down"></i></dt>
+      <dd>배송지를 변경할 수 있나요?</dd>
+      <dt>교환 신청은 어떻게 하나요?<i class="fas fa-angle-down"></i></dt>
+      <dd>교환 신청은 어떻게 하나요?</dd>
+      <dt>CJ온스타일 앱(어플리케이션)은 어떻게 설치하나요?<i class="fas fa-angle-down"></i></dt>
+      <dd>CJ온스타일 앱(어플리케이션)은 어떻게 설치하나요?</dd>
+      <dt>결제수단 변경하려면 주문취소하고 재주문하나요?<i class="fas fa-angle-down"></i></dt>
+      <dd>결제수단 변경하려면 주문취소하고 재주문하나요?</dd>
+    </dl>
+  </section>
+</body>
+</html>

@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+*{margin:0px; padding:0px;}
+ul,ol,li{list-style: none;}
+a{text-decoration: none; color:#333;}
+body{
+  font-family: '맑은고딕', arial, sans-serif;
+  font-size: 14px;
+  color:#222
+}
+
+section{
+  width:750px;
+  margin:0px auto;
+  padding-top: 50px;
+}
+
+.s_box{
+  display: flex;
+  position: relative;
+}
+.s_box input[type=search]{
+width:750px; height:33px;
+border-radius: 50px;
+border: 1px solid #6400B2;
+color:#ccc;
+text-indent: 40px;
+}
+
+i.fa-magnifying-glass{
+  position: absolute;
+  left:15px;
+  font-weight: bold;
+  color:#6400B2;
+  line-height: 33px;
+}
+
+
+section h2{
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.title{
+  position: relative;
+}
+
+.title > p{
+  position: absolute;
+  right:0px; top:0px;
+}
+
+.faq{
+
+  border-bottom: 1px solid #ccc;
+  counter-reset: chapter 0;
+}
+
+.faq > dt{
+  line-height: 40px;
+  border-top: 1px solid #ccc;
+  cursor: pointer;
+  text-indent: 10px;
+}
+
+.faq > dt::before{
+counter-increment: chapter;
+content:counter(chapter) " ";
+color:#6400B2;
+font-weight: bold;
+}
+
+.faq > dt > i.fas{
+  float:right;
+  line-height: 40px;
+}
+
+.faq dd{
+  padding:50px 0px;
+  background: #f4f4f4;
+  text-indent: 20px;
+  display: none;
+}
+
+.act01{
+  transform: rotate(180deg);
+}
+

@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+.root{
+  --bc-color01:#d63384;
+  --t-color01:#333;
+  --t-color02:#fff;
+}
+
+*{margin:0px auto;}
+
+ul,ol,li{list-style: none;}
+a{color:#333; text-decoration: none;}
+
+body{
+  font-family: '맑은고딕', airal, sans-serif;
+  font-size: 12px;
+  color:#333;
+}
+
+header{
+  width:100%;
+  height:60px;
+  position:fixed;
+  top:0px; left:0px;
+  background: #d63384;
+}
+
+header > h1{
+  font-size: 30px;
+  line-height: 60px;
+  margin-left: 100px;
+}
+
+.gnb{
+  position: absolute;
+  top:10px; right:100px;
+  width:1000px;
+}
+
+.gnb > ul{
+  display: flex;
+  justify-content: space-around;
+}
+
+.gnb > ul > li{}
+.gnb > ul > li > a{
+  color:#fff;
+  line-height: 60px;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+/* 콘텐츠 서식 */
+
+main{
+  width:1200px;
+  margin:0px auto;
+  padding-top:50px;
+}
+main > section{height:850px;}
+main > section:nth-child(2n){
+  background: #b17090;
+}
+main > section:nth-child(2n-1){
+  background: #daadc3;
+}
+main > section >h2{
+  text-align: center;
+  padding:20px 0px; margin-top: 50px;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+/* 푸터서식 */
+
+footer{
+  background: #333;
+  text-align: center;
+  width:100%;
+}
+
+footer>address{
+  line-height: 50px;
+  color:#fff;
+}

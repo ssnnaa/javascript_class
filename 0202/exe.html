@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_탭메뉴</title>
+  <style>
+
+    ul,ol,li{list-style: none;}
+    a{text-decoration: none; color:#333;}
+    body{
+      font-family: '맑은고딕',arial,sans-serif;
+      font-size: 12px;
+      color:#333
+    }
+    .tab_con *{margin:0px; padding:0px;}
+    .tab_con{
+      width:1040px;
+      height:720px;
+      border:3px solid #333;
+      margin:0px auto;
+      position: relative;
+    }
+    .tab_con > h2{display:none;}
+
+    .tab_con > ul{display: flex;}
+    .tab_con > ul > li{
+      width:20%; height:px;
+      text-align: center;
+    }
+    .tab_con > ul > li > a{
+      font-size: 16px;
+      display: block;
+      padding:10px 0px;
+    }
+    .tab_con > ul > li > a img{height:50px;}
+    .tab_con > ul > li > a p{
+      font-weight: bold;
+      padding-top:5px;
+    }
+
+    .tab_con .con{
+      position: absolute;
+      left:0px;
+    }
+    div:not(.c01){display: none;}
+    .act{
+      color:#fff;
+      background: #F06D01;
+    }
+  </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+      $(function(){
+        let t_mnu = $('.tab_con li a');
+        let i = 
+
+        t_mnu.click(function(){
+          let src = $(this).find('img').attr('src');
+          console.log(src);
+          console.log(i);
+          $(this).addClass('act').parent().siblings().find('a').removeClass('act');
+          src = src.replace('_off','_on');
+          console.log(src);
+          $(this).find('img').attr('src',src);
+          
+          t_mnu.each(function(){ //li태그에 각각 기능을 삽입한다.
+            if($(this).hasClass('act')==false){ //만약 act 클래스를 가지고 있지 않다면
+              let src = $(this).find('img').attr('src');
+              src = src.replace('_on','_off');
+              $(this).find('img').attr('src',src);
+            }
+          });
+          $('.tab_con div').hide();
+          $(this).next().show();
+          return false;
+        });
+      });
+    </script>
+</head>
+<body>
+  <article class="tab_con">
+    <h2>탭메뉴</h2>
+    <ul>
+      <li>
+        <a href="#" title="테마여행" class="act">
+          <img src="./img/ico_theme_zone_1_off.png" alt="테마여행">
+          <p>테마여행</p>
+        </a>
+        <div class="con c01">
+          <img src="./img/01.jpg" alt="테마여행갤러리">
+        </div>
+      </li>
+
+      <li>
+        <a href="#" title="추천일정">
+          <img src="./img/ico_theme_zone_2_off.png" alt="추천일정">
+          <p>추천일정</p>
+        </a>
+        <div class="con c02">
+          <img src="./img/02.jpg" alt="테마여행갤러리">
+        </div>
+      </li>
+
+      <li>
+        <a href="#" title="스크린속 제주">
+          <img src="./img/ico_theme_zone_3_off.png" alt="스크린속 제주">
+          <p>스크린속 제주</p>
+        </a>
+        <div class="con c03">
+          <img src="./img/03.jpg" alt="테마여행갤러리">
+        </div>
+      </li>
+
+      <li>
+        <a href="#" title="교통정보">
+          <img src="./img/ico_theme_zone_4_off.png" alt="교통정보">
+          <p>교통정보</p>
+        </a>
+        <div class="con c04">
+          <img src="./img/04.jpg" alt="테마여행갤러리">
+        </div>
+      </li>
+
+      <li>
+        <a href="#" title="안전안심관광가이드">
+          <img src="./img/ico_theme_zone_5_off.png" alt="안전안심관광가이드">
+          <p>안전&dot;안심관광 가이드</p>
+        </a>
+        <div class="con c05">
+          <img src="./img/05.jpg" alt="테마여행갤러리">
+        </div>
+      </li>
+    </ul>
+    
+  </article>
+</body>
+</html>

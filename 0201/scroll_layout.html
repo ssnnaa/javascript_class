@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹페이지 가로스크롤 레이아웃</title>
+  <link href="./css/scroll.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <!-- jQuery UI 라이브러리 추가 32line : easeOutQuint 미적용 이슈 -->
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    // 가로 스크롤 나오게
+    $(function(){
+
+      $(window).scroll(function(){
+        let sPos = $(this).scrollLeft();
+        $('.status').html(sPos);
+      });
+
+      let mnu = $('.gnb ul li a');
+
+      mnu.click(function(){
+        $('.gnb ul li a').removeClass('on');
+        $(this).addClass('on');
+
+        // 선택한 a요소의 href속성값을 출력해본다.
+        let id_name = $(this).attr('href');
+        console.log(id_name);
+
+        let secOffset = $(id_name).offset().left;
+        console.log(secOffset);
+
+        //해당하는 콘텐츠 위치가 0이 되도록 한다.
+
+        $('html, body').animate({scrollLeft:secOffset},500,'easeOutQuint'); // secoffset -> SecOffset 대소문자 이슈
+
+        return false;
+      });
+      
+      // 휠이벤트 사용하여 가로스크롤 되게 하기
+      $('main section').each(function(){
+         // 개별적으로 Wheel 이벤트 적용
+        $(this).on('mousewheel',function(e){
+          
+          var delta = 0;
+          var moveTop = null;
+          var boxMax = $("main section").length - 1;
+          var winEvent = "";
+          console.log(boxMax);
+          
+          if(!winEvent) { //만약에 이벤트가 발생하지 않는다면
+            winEvent = window.event; //이벤트는 없다
+          }
+          if(winEvent.wheelDelta) { //만약에 이벤트에서 휠데이터값이 있다면
+            delta = winEvent.wheelDelta / 120; //데이터값을 저장
+            if(window.opera) {
+                delta = -delta;
+            }
+          }          
+          else if(winEvent.detail) { //그렇지 않으면
+             delta = -winEvent.detail / 3; 
+          }
+                
+          // 마우스휠을 위에서 아래로 이동(처음에서 다음박스로 이동)
+          if(delta < 0) {
+              // 마지막 BOX 보다 순서값이 작은 경우에 실행
+              if($(this).index() < boxMax) {
+                  console.log("▼");
+                  if($(this).next() != undefined) {
+                      moveTop =$(this).next().offset().left;
+                  }
+              }
+              // 마지막 section보다 더 오른쪽으로 이동하려고 하는 경우 알림창 출력
+              else {
+                  alert("마지막 페이지 입니다.");
+                  return false;
+              }
+          }
+          // 마우스휠을 아래에서 위로 이동( 뒤에서 앞으로 이동)
+          else {
+              // 첫번째 section보다 순서값이 큰 경우에 실행
+              if($(this).index() > 0) {
+                  console.log("▲");
+                  if($(this).prev() != undefined) {
+                      moveTop =$(this).prev().offset().left;
+                  }
+              }
+              // 첫번째 section보다 더 위로 이동하려고 하는 경우 알림창 출력
+              else {
+                  alert("첫번째 페이지 입니다.");
+                  return false;
+              }
+          }
+               //화면 이동 0.3초(300)
+              $("html,body").stop().animate({scrollLeft : moveTop + "px"}, 300);
+          });
+        });
+
+
+        $(window).scroll(function(){
+        let sPos = $(this).scrollLeft();       
+
+        $('main section').each(function(i){
+          let left = $(this).offset().left;
+          console.log(left);
+
+          if(sPos>=left){
+            $('.gnb ul li a').removeClass('on');
+            $('.gnb ul li').eq(i).find('a').addClass('on');
+          }
+        })
+      });
+
+    });
+  </script>
+</head>
+<body>
+  <span class="status"></span>
+  <!-- 헤더 -->
+  <header>
+    <nav class="gnb">
+      <ul>
+        <li><a href="#car01" class="on">Mini Cooper</a></li>
+        <li><a href="#car02">Tesla</a></li>
+        <li><a href="#car03">Lamborghini</a></li>
+        <li><a href="#car04">Porsche</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- 메인 -->
+  <main id="cont">
+    <section id="car01">
+      <h2>Mini Cooper</h2>
+      <p>자동차 소개 내용</p>
+    </section>
+    <section id="car02">
+      <h2>Tesla</h2>
+      <p>자동차 소개 내용</p>
+    </section>
+    <section id="car03">
+      <h2>Lamborghini</h2>
+      <p>자동차 소개 내용</p>
+    </section>
+    <section id="car04">
+      <h2>Porsche</h2>
+      <p>자동차 소개 내용</p>
+    </section>
+  </main>
+  <!-- 푸터 -->
+  <footer>
+    <address>
+      copyright&copy;2023 가로스크롤 레이아웃 allrights reserved.
+    </address>
+  </footer>
+</body>
+</html>

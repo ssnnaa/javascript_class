@@ -1,0 +1,403 @@
+@charset "utf-8";
+
+main{}
+main > section{}
+
+/* 공통제목서식 */
+.m_title{
+  font-size: 34px;
+  text-align: center;
+  font-weight: bold;
+  padding:50px 0px 10px 0px;
+  color:#000;
+}
+
+/* 공통더보기버튼서식 */
+.more_btn{
+  font-size: var(--f-size);
+  border: 1px solid #333;
+  padding:10px 30px;
+  transition: 0.5s;
+}
+
+.more_btn:hover{
+  background: var(--t-color01);
+  color:var(--t-color02);
+}
+
+#main_intro{
+  height:100vh;  overflow: hidden;
+
+}
+#main_intro > h2{display: none;}
+#main_intro article{
+  position: absolute;
+  width:100%;
+  top:50%; 
+  transform: translateY(-46%);
+  z-index: 100;
+  text-align: center;
+  color:var(--t-color02);
+}
+
+#main_intro article > h3{
+  font-size:60px;
+  font-weight: bold;
+}
+
+#main_intro article >p{
+  line-height: 80px;
+  font-size:16px;
+}
+
+#main_intro > article > a{
+  color:var(--t-color02);
+  font-size: 14px;
+  text-decoration: underline;
+  margin:0px 20px;
+  padding:5px 10px;
+}
+
+#main_intro > article > a:first-of-type{
+  background: var(--bg-color01);
+}
+
+#next_btn{
+  width:30px; height:30px;
+  text-indent: -9999px;
+  border-right:1px solid #fff;
+  border-bottom:1px solid #fff;
+  position: absolute;
+  z-index: 1000;
+  bottom:20px; left:50%;
+  transform: translateX(-50%);
+  transform: rotate(45deg);
+}
+
+#top3, #intro, #test, #event, #buy, #cs{
+  /* background: #ccc; */
+  margin:50px 0px;
+}
+
+/* 가장 인기있는 top3 제품 */
+#top3{
+  text-align: center;
+  position: relative;
+  background: none;
+}
+
+
+#top3 > p{
+  font-size: 16px;
+  line-height: 80px;
+}
+
+#top3 > .c_wrap {
+  width:100%; max-width: 1000px;
+  display: flex;
+  overflow: visible;
+  justify-content: space-around;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.c_wrap > h2{display:none;}
+
+
+
+.con{
+  width:800px;
+  /* margin:0px 100px; */
+}
+
+.con > p:first-of-type{
+  width:50px; height:20px;
+  border-radius: 50px;
+  border:1px solid var(--t-color03);
+  line-height: 18px;
+  margin: 0px auto;
+  color:var(--t-color03);
+}
+
+.con > p:last-of-type{
+  width:150px; height:40px;
+  border:1px solid #000;
+  margin:0px auto;
+  line-height: 40px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.con > p:last-of-type:hover{
+  background: var(--bg-color01);
+  color:var(--t-color02);
+}
+
+.con > h3{
+  font-size: 24px;
+  color:var(--bg-color02);
+  line-height: 80px;
+}
+.con > img{
+  margin-top: 50px;
+  width:400px;
+}
+
+.con > ul{
+  display:flex;
+  justify-content: center;
+}
+
+.con > ul > li{
+  text-align: left;
+  margin:40px 30px;
+}
+
+.con > ul > li p{
+  line-height: 20px;
+}
+
+.con li:first-child, .con li:nth-child(2){
+  display: flex;
+}
+
+.con li:first-child > span, .con li:nth-child(2) > span{
+  height:30px;
+  padding: 0px 20px;
+  background: #47493C;
+  margin-right:5px;
+  margin-top:5px;
+}
+
+.con li:nth-child(2) > span{
+  background: #000;
+}
+
+.con li:last-child p{
+  line-height: 40px;
+}
+.con li:last-child p > span{
+  font-size: 20px;
+  color:var(--bg-color02);
+  font-weight: bold;
+}
+
+.c_btn{
+  width:100px;
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+  bottom:0px;
+  display: flex;
+}
+.c_btn > li{
+  margin:0px 10px !important;
+  padding:0px 4px;
+  border-radius: 50%;
+  background:#ccc ;
+}
+
+.act_c{
+  background: var(--t-color02);
+}
+
+#top3 .swiper-pagination{
+  bottom:-50px;
+
+}
+
+
+/* 소개 */
+#intro h2{
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+#intro{
+  margin-top: 100px;
+  position: relative;
+  height: 940px;
+  overflow: hidden;
+}
+
+
+#intro h2, #intro p{position: absolute; color:#000;}
+
+#intro .l_title{top :150px; left:70px;}
+#intro .r_title{right:70px; bottom:120px; text-align: right;}
+
+.l_title, .r_title{
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+#intro .more_btn{
+  position: absolute;
+  left:50%; transform: translateX(-50%);
+  bottom: 120px ;
+}
+
+#intro video{
+  width:100%;
+  transform: translateY(-50px);
+  position: absolute;
+}
+
+/* 시승신청 */
+#test{
+  text-align: center;
+}
+#test > .p01{
+  text-align: center;
+  font-size: var(--f-size01);
+  line-height: 40px;
+}
+#test > article{
+  width:430px;
+  height:260px;
+  border: 1px solid #ccc;
+  padding:15px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  margin-top: 50px;
+}
+
+.t_drive_l{margin-right: 30px;}
+.t_drive_r{transform: translateY(-11px);}
+
+#test > article > h3{
+  font-size: 24px;
+  padding-top: 20px;
+  font-weight: bold;
+  line-height: 40px;
+}
+
+#test > article > p{
+  font-weight:500;
+  font-size: (--f-size);
+  line-height: 20px;
+  padding:15px 0px;
+}
+
+.test_d_btn{
+  background: var(--bg-color02);
+  color:#fff;
+  line-height: 30px;
+  padding:10px 60px;
+  position:
+}
+
+.test_d_btn01{
+  color: var(--bg-color01);
+  position: relative;
+  top:16px;
+}
+.t_drive_p1{
+  transform: translateY(70px);
+}
+
+.t_drive_p2{
+  transform: translateY(81px);
+}
+
+.t_drive_r, .t_drive_p2{}
+
+
+/* 이벤트프로모션 */
+
+#event > p{
+  text-align: center;
+  font-size: var(--f-size01);
+  line-height: 40px;
+}
+
+.e_slide_wrap{
+  width:1200px; height: 300px;
+  margin: 0px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.e_slide_wrap > ul{
+  display: flex;
+  position: absolute;
+  left: 0px;
+  transition: 0.5s;
+}
+.e_slide_wrap > ul > li{}
+.e_slide_wrap > ul > li a{}
+.e_slide_wrap > ul > li img{
+  width:1200px;
+}
+
+.e_btn_l, .e_btn_r{
+  width:20px; height:20px;
+  border-left:1px solid #333;
+  border-bottom:1px solid #333;
+  position: absolute;
+  top:50%;
+  cursor: pointer;
+}
+
+.e_btn_l{transform: rotate(45deg); left:10px;}
+.e_btn_r{transform: rotate(225deg); right:10px;}
+
+.e_c_btn{
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom:-100px;
+  margin-bottom: 50px;
+}
+
+.e_c_btn > li{
+  width:10px; height:10px;
+  background: #777;
+  margin:0px 5px;
+  border-radius: 50px;
+}
+
+.act_e{
+  background: var(--t-color03) !important;
+}
+
+/* 모달서식 */
+.modal{
+  width:100%; height:100%;
+  position: fixed;
+  left:0px; top:0px;
+  background: rgba(0,0,0,.7);
+  z-index: 1000;
+}
+
+.modal > .m_inner{
+  width:450px; height:640px;
+  position: absolute;
+  left:50%; top:50%;
+  transform: translate(-50%,-50%);
+
+}
+
+.m_inner > p{
+  background: #fff;
+  color:var(--t-color01);
+  line-height: 40px;
+  font-size: var(--f-size);
+  padding:0px 5px;
+  box-sizing: border-box;
+}
+
+.m_inner >p a {
+  color:var(--t-color01);
+  position: absolute;
+  right:10px;
+  font-size: var(--f-size);
+}
+
+.m_inner > p > label[for=ch]{
+  color:var(--t-color01);
+}

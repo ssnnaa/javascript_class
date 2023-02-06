@@ -1,0 +1,67 @@
+1. 전화번호의 지역번호가 '03'  또는 '05'로 시작하는 레코드의 서점 코드와 상호 조회
+
+select code,name from book_store where tel_num like '03%' or tel_num like '05%';
+
+
+2. 보유 서적수를 통화표기, + 권을 붙여서 조회
+select CONCAT(FORMAT(book_cnt, 0),'권') as 'book_cnt' from book_store;
+
+
+3. 모든 레코드의 전화번호를 지역번호 제외하고 조회
+select substr(tel_num, instr(tel_num,'-')+1) from book_store;
+
+4. 북스토어에서 상호명컬럼의 상호명 문자열 길이 조회
+select name, length(name) from book_store;
+
+5. 서점 코드번호를 10자리로 0을 채워서 출력한다
+select to_char (code, '0000000000') from book_store;
+
+
+
+------------------------------------------------------------------------
+1. update book_store set name = name||'_'||area1;
+
+2. update book_store set area3='미정' where area3 in null;
+
+3. update book_store set book_cnt=book_cnt*2 where tel_num like '06%';
+전화번호가 06자로 시작하는 데이터를 찾아 가격을 두배로 곱하여 수정한다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+insert into book_store values (00001, 'YES24', '서울', '서초', '방배', 10000, '정회원', '02-1234-5678');
+
+insert into book_store values (00002, '교보문고', '강원', '동해', '심곡', 11000, '나대연', '033-2234-5678');
+
+insert into book_store values (00003, '알라딘', '경기', '성남', '분당', 9000, '김상순', '031-3234-5678');
+
+insert into book_store values (00004, '인터파크', '경남', '창원', '경화', 8000, '장베리', '055-4234-5678');
+
+insert into book_store values (00005, '리브로', '광주', '남구', '', 12000, '박파이', '062-5234-5678');
+
+insert into book_store values (00006, 'G마켓', '제주', '서귀포', '', 13000, '전세용', '064-6234-5678');
+
+insert into book_store values (00007, '11번가', '부산', '수영', '광안', 10000, '최삽삽', '051-7234-5678');
